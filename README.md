@@ -12,7 +12,7 @@ The local demo below uses hand landmarks and browser compositing. If you want a 
 
 ## Trend reference
 
-The GitHub Pages demo includes five authorized clips that trace the trend from an early hand transition through local tracking, offline AI video editing, and real-time AI styling. They document the interaction that inspired this project; they are not training data, sample inputs, or output from this repository's code. See the dated [X source log](research/x-sources.md) and [media attribution record](ATTRIBUTIONS.md).
+The GitHub Pages demo includes four authorized clips that trace the trend from an early hand transition through local tracking, offline AI video editing, and real-time AI styling. They document the interaction that inspired this project; they are not training data, sample inputs, or output from this repository's code. See the dated [X source log](research/x-sources.md) and [media attribution record](ATTRIBUTIONS.md).
 
 ## What the demo does
 
@@ -24,6 +24,10 @@ The result is intentionally local-first:
 - No API key is required for the tracking demo.
 - The app can record the canvas result as WebM.
 - You can inspect every tracking and compositing step.
+
+## Localized pages
+
+The GitHub Pages site has fully localized landing pages for [English](https://aithink001.github.io/finger-frame-effect-ai/), [简体中文](https://aithink001.github.io/finger-frame-effect-ai/zh/), [한국어](https://aithink001.github.io/finger-frame-effect-ai/ko/), [日本語](https://aithink001.github.io/finger-frame-effect-ai/ja/), and [Español](https://aithink001.github.io/finger-frame-effect-ai/es/). Each page has its own title, description, canonical URL, reciprocal hreflang links, tutorial copy, FAQ, and localized route into C Dance AI.
 
 ## Run it locally
 
@@ -59,7 +63,9 @@ The hosted workflow uses a different method. It sends the source clip to a video
 ├── assets/                         Original project artwork
 ├── public/examples/                Authorized trend-reference clips
 ├── research/                       Trend notes and permission records
+├── zh, ko, ja, es/                 Localized SEO landing pages
 ├── src/app.js                      Detection, tracking, compositing, export
+├── src/locale-page.js              Shared localized-page entry
 ├── src/styles.css                  Responsive interface styles
 ├── index.html                      Demo and on-page metadata
 └── ATTRIBUTIONS.md                 Third-party asset policy

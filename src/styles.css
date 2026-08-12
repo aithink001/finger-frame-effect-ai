@@ -53,6 +53,9 @@ button, input { font: inherit; }
 h1, h2, h3 { font-family: 'Manrope', sans-serif; }
 h1 { margin: 20px 0 0; font-size: clamp(54px, 7.6vw, 104px); line-height: 0.92; letter-spacing: -0.07em; }
 .hero-lede { max-width: 620px; margin: 28px 0 0; color: rgba(255, 255, 255, 0.64); font-size: 20px; line-height: 1.65; }
+.language-switch { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.language-switch a { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; color: rgba(255, 255, 255, 0.54); font-size: 12px; font-weight: 700; }
+.language-switch a:hover, .language-switch a.active { border-color: rgba(103, 232, 249, 0.52); background: rgba(103, 232, 249, 0.1); color: #cffafe; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; cursor: pointer; font-weight: 700; transition: 160ms ease; }
 .button:disabled { cursor: not-allowed; opacity: 0.42; }
@@ -101,6 +104,7 @@ h1 { margin: 20px 0 0; font-size: clamp(54px, 7.6vw, 104px); line-height: 0.92; 
 .reference-grid figure { margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 20px; background: var(--panel); }
 .reference-grid video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #020307; object-fit: contain; }
 .reference-grid figcaption { padding: 14px 16px; color: rgba(255, 255, 255, 0.52); font-size: 13px; }
+.reference-grid figcaption a { color: var(--cyan); font-weight: 700; }
 .source-link { display: inline-block; margin-top: 22px; color: var(--cyan); font-size: 13px; font-weight: 700; }
 .source-link:hover { text-decoration: underline; }
 .guide-section { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 70px; border-block: 1px solid var(--border); background: #090b11; }
@@ -120,6 +124,12 @@ h1 { margin: 20px 0 0; font-size: clamp(54px, 7.6vw, 104px); line-height: 0.92; 
 .ai-cta > div { max-width: 780px; }
 footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px max(20px, calc((100vw - 1180px) / 2)); border-top: 1px solid var(--border); color: rgba(255, 255, 255, 0.4); font-size: 12px; }
 footer a { color: rgba(255, 255, 255, 0.7); }
+.localized-main { padding-top: 36px; }
+.localized-hero { min-height: 620px; }
+.localized-hero .hero-copy { max-width: 700px; }
+.localized-intro { padding: 92px max(20px, calc((100vw - 980px) / 2)); border-block: 1px solid var(--border); background: #090b11; }
+.localized-intro h2 { margin: 14px 0 0; font-size: clamp(34px, 5vw, 56px); line-height: 1.08; letter-spacing: -0.045em; }
+.localized-intro p { color: rgba(255, 255, 255, 0.58); font-size: 17px; line-height: 1.8; }
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; padding-top: 90px; }
