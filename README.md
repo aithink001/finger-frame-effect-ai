@@ -89,10 +89,6 @@ The hosted workflow uses a different method. It sends the source clip to a video
 
 Files committed to this repository must be original, public-domain, or covered by a license or written permission that allows redistribution. Trend research and downloaded reference clips remain outside Git tracking until the creator grants permission. See [ATTRIBUTIONS.md](ATTRIBUTIONS.md).
 
-## Prior art
-
-[Sophia Yang's finger-frame project](https://github.com/sophiamyang/finger-frame-effect-ai) helped bring this interaction into wider view. This repository is a from-scratch implementation with a different browser pipeline, interface, and distribution goal; it does not copy source code or bundled media from that project.
-
 ## Independence notice
 
 This is an original implementation inspired by the broader finger-frame video trend. It is not an official version of any other repository, social-media creator, model provider, or platform. C Dance AI is an independent AI creation platform.
