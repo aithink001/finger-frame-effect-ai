@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/finger-frame-icon.svg" type="image/svg+xml" />
+    <title>Finger Frame Effect AI – Free Hand-Tracking Demo</title>
+    <meta
+      name="description"
+      content="Try a free finger frame effect AI demo with MediaPipe hand tracking, a moving video portal, local browser compositing, and WebM export."
+    />
+    <meta
+      name="keywords"
+      content="finger frame effect ai, finger frame ai, hand tracking video effect, MediaPipe finger frame, AI video effect"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aithink001.github.io/finger-frame-effect-ai/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Finger Frame Effect AI" />
+    <meta property="og:description" content="Track a two-hand finger frame and reveal another moving world inside it." />
+    <meta property="og:url" content="https://aithink001.github.io/finger-frame-effect-ai/" />
+    <meta property="og:image" content="https://aithink001.github.io/finger-frame-effect-ai/assets/finger-frame-ai-hero.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Finger Frame Effect AI" />
+    <meta name="twitter:description" content="An open-source finger-frame hand-tracking and video-compositing demo." />
+    <meta name="twitter:image" content="https://aithink001.github.io/finger-frame-effect-ai/assets/finger-frame-ai-hero.jpg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SoftwareSourceCode",
+            "name": "Finger Frame Effect AI",
+            "description": "A browser-based hand-tracking and video-compositing demo for the finger frame effect.",
+            "codeRepository": "https://github.com/aithink001/finger-frame-effect-ai",
+            "programmingLanguage": "JavaScript",
+            "runtimePlatform": "Web Browser",
+            "license": "https://opensource.org/license/mit"
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the finger frame effect?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It is a video effect that turns the opening made by two hands into a tracked window for another scene."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does this demo upload my video?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The demo reads uploaded clips and composites the result locally in the browser tab."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does the frame lose tracking?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Motion blur, crossed fingers, occlusion, poor lighting, or either hand leaving the shot can make the four-corner geometry unreliable."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Finger Frame Effect AI home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Finger Frame AI
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#demo">Demo</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="https://github.com/aithink001/finger-frame-effect-ai">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Open-source hand tracking and video compositing</p>
+          <h1>Finger Frame Effect AI</h1>
+          <p class="hero-lede">
+            Make a window with your hands. The browser tracks its four corners and reveals another moving world inside the frame.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#demo">Try the local demo</a>
+            <a
+              class="button button-secondary"
+              href="https://cdance.ai/finger-frame-effect-ai?utm_source=github-pages&utm_medium=demo&utm_campaign=finger_frame_ai"
+            >Create with AI</a>
+          </div>
+          <ul class="proof-list" aria-label="Project features">
+            <li>Runs in your browser</li>
+            <li>MediaPipe hand landmarks</li>
+            <li>WebM export</li>
+          </ul>
+        </div>
+        <figure class="hero-visual">
+          <img
+            src="assets/finger-frame-ai-hero.jpg"
+            alt="A creator holding a finger frame around a glowing future city"
+            width="1672"
+            height="941"
+          />
+        </figure>
+      </section>
+
+      <section id="demo" class="demo-section" aria-labelledby="demo-title">
+        <div class="section-heading">
+          <p class="eyebrow">Local demo</p>
+          <h2 id="demo-title">Track the frame in your own video</h2>
+          <p>Your files stay in this tab. A short, stable, well-lit clip works best.</p>
+        </div>
+
+        <div class="demo-grid">
+          <aside class="control-panel">
+            <label class="upload-card" for="source-input">
+              <span class="upload-number">01</span>
+              <strong>Source video</strong>
+              <span>Upload a clip with both hands forming a clear frame.</span>
+              <input id="source-input" type="file" accept="video/mp4,video/quicktime,video/webm" />
+            </label>
+            <p id="source-name" class="file-name">No source selected</p>
+
+            <label class="upload-card" for="world-input">
+              <span class="upload-number">02</span>
+              <strong>Portal video (optional)</strong>
+              <span>Add the moving world shown inside the hand frame.</span>
+              <input id="world-input" type="file" accept="video/mp4,video/quicktime,video/webm" />
+            </label>
+            <p id="world-name" class="file-name">Using the animated fallback world</p>
+
+            <div class="button-stack">
+              <button id="start-button" class="button button-primary" type="button" disabled>Start effect</button>
+              <button id="record-button" class="button button-secondary" type="button" disabled>Record result</button>
+            </div>
+
+            <p id="status" class="status" role="status">Loading the hand tracker…</p>
+            <div class="privacy-note">
+              <strong>Local processing</strong>
+              <span>Uploaded videos are not sent to this project’s server.</span>
+            </div>
+          </aside>
+
+          <div class="stage-panel">
+            <canvas id="output-canvas" width="1280" height="720" aria-label="Finger frame effect preview"></canvas>
+            <video id="source-video" playsinline muted hidden></video>
+            <video id="world-video" playsinline muted loop hidden></video>
+            <div class="stage-hud" aria-hidden="true">
+              <span id="tracking-pill">Waiting for video</span>
+              <span>Two hands required</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="how-section" aria-labelledby="how-title">
+        <div class="section-heading">
+          <p class="eyebrow">Under the hood</p>
+          <h2 id="how-title">Four points, one moving window</h2>
+        </div>
+        <ol class="step-grid">
+          <li><span>01</span><h3>Detect</h3><p>MediaPipe finds two hands and returns thumb and index landmarks.</p></li>
+          <li><span>02</span><h3>Order</h3><p>The four fingertips are sorted around their center to create a valid polygon.</p></li>
+          <li><span>03</span><h3>Stabilize</h3><p>Area gates, smoothing, and dropout hold reduce collapse, jitter, and flicker.</p></li>
+          <li><span>04</span><h3>Composite</h3><p>Canvas clips a second video or animated world into the tracked shape.</p></li>
+        </ol>
+      </section>
+
+      <section class="reference-section" aria-labelledby="reference-title">
+        <div class="section-heading">
+          <p class="eyebrow">Trend reference</p>
+          <h2 id="reference-title">The finger-frame interaction in motion</h2>
+          <p>
+            These authorized X clips trace the trend from the early hand transition to local tracking, offline AI editing, and real-time generation. This repository uses its own tracking and compositing code.
+          </p>
+        </div>
+        <div class="reference-grid">
+          <figure>
+            <video controls muted loop playsinline preload="metadata" poster="examples/sophia-yang-finger-frame-demo-01.jpg">
+              <source src="examples/sophia-yang-finger-frame-demo-01.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Finger-frame AI demo 01 · Sophia Yang</figcaption>
+          </figure>
+          <figure>
+            <video controls muted loop playsinline preload="metadata" poster="examples/sophia-yang-finger-frame-demo-02.jpg">
+              <source src="examples/sophia-yang-finger-frame-demo-02.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Finger-frame AI demo 02 · Sophia Yang</figcaption>
+          </figure>
+          <figure>
+            <video controls muted loop playsinline preload="metadata" poster="examples/viral-korean-finger-frame-demo.jpg">
+              <source src="examples/viral-korean-finger-frame-demo.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Viral Korean finger-frame transition · X trend reference</figcaption>
+          </figure>
+          <figure>
+            <video controls muted loop playsinline preload="metadata" poster="examples/qingq77-original-finger-frame-demo.jpg">
+              <source src="examples/qingq77-original-finger-frame-demo.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Early finger-frame transition reference · @QingQ77</figcaption>
+          </figure>
+          <figure>
+            <video controls muted loop playsinline preload="metadata" poster="examples/venturetwins-live-finger-frame-demo.jpg">
+              <source src="examples/venturetwins-live-finger-frame-demo.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Real-time AI style demo · @venturetwins</figcaption>
+          </figure>
+        </div>
+        <a class="source-link" href="https://github.com/aithink001/finger-frame-effect-ai/blob/main/research/x-sources.md">View source links and dated engagement notes</a>
+      </section>
+
+      <section class="guide-section" aria-labelledby="guide-title">
+        <div class="guide-copy">
+          <p class="eyebrow">Before you record</p>
+          <h2 id="guide-title">A clean source clip makes the portal feel real</h2>
+          <p>
+            Use a locked camera and front-facing light. Bring both hands into view before forming the opening, then hold the shape for two seconds. Keep the background simple and avoid crossing one fingertip over another. The tracker needs four distinct points; blur or heavy overlap can turn the window into a collapsed polygon.
+          </p>
+          <p>
+            Start with a four-to-eight-second MP4, MOV, or WebM clip. If the outline flickers, slow the hand movement and add more light before changing the code. For a generative result that changes the world while preserving your performance, use the linked C Dance AI workflow.
+          </p>
+        </div>
+        <div class="checklist" aria-label="Recording checklist">
+          <div><strong>Camera</strong><span>Tripod or stable surface</span></div>
+          <div><strong>Light</strong><span>Even light across both hands</span></div>
+          <div><strong>Gesture</strong><span>Four separated fingertips</span></div>
+          <div><strong>Duration</strong><span>Four to eight seconds</span></div>
+        </div>
+      </section>
+
+      <section class="faq-section" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <p class="eyebrow">Questions</p>
+          <h2 id="faq-title">Finger frame effect AI FAQ</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>What is the finger frame effect?</summary>
+            <p>It turns the opening made by two hands into a tracked window for another scene. This demo uses fingertip landmarks and Canvas clipping; it does not generate pixels with an AI model.</p>
+          </details>
+          <details>
+            <summary>Does this demo upload my video?</summary>
+            <p>No. The page reads your source and portal clips locally in the browser tab. The MediaPipe model files load from their public hosts, but your uploaded video is not sent to this project's server.</p>
+          </details>
+          <details>
+            <summary>Why does the frame lose tracking?</summary>
+            <p>Motion blur, crossed fingers, occlusion, low contrast, or either hand leaving the shot can make the four-corner shape unreliable. A stable camera and slower gesture usually help more than heavier smoothing.</p>
+          </details>
+          <details>
+            <summary>How is the C Dance AI version different?</summary>
+            <p>The local demo clips existing media into a tracked polygon. C Dance AI sends your source to a generative video-edit model, so the scene inside the opening can react to lighting and motion instead of behaving like a flat overlay.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="ai-cta">
+        <div>
+          <p class="eyebrow">Want the generative version?</p>
+          <h2>Turn the frame into a world you describe</h2>
+          <p>C Dance AI opens a video-editing workspace with a finger-preservation prompt and Gemini Omni selected.</p>
+        </div>
+        <a
+          class="button button-primary"
+          href="https://cdance.ai/finger-frame-effect-ai?utm_source=github-pages&utm_medium=cta&utm_campaign=finger_frame_ai"
+        >Open C Dance AI</a>
+      </section>
+    </main>
+
+    <footer>
+      <p>Original open-source implementation. Do not add third-party media without redistribution permission.</p>
+      <a href="https://github.com/aithink001/finger-frame-effect-ai/blob/main/ATTRIBUTIONS.md">Media policy</a>
+    </footer>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

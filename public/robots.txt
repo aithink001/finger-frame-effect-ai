@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aithink001.github.io/finger-frame-effect-ai/sitemap.xml
