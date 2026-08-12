@@ -31,26 +31,54 @@ function setStatus(message) {
   status.textContent = message;
 }
 
-function loadVideo(input, video, label, onReady) {
+function loadVideo(input, video, label, onReady, onError) {
   const file = input.files?.[0];
   if (!file) return;
   const nextUrl = URL.createObjectURL(file);
   video.src = nextUrl;
   video.load();
   label.textContent = file.name;
-  video.addEventListener('loadedmetadata', () => onReady(nextUrl), { once: true });
+  video.addEventListener('loadeddata', () => onReady(nextUrl), { once: true });
+  video.addEventListener(
+    'error',
+    () => onError?.(video.error?.message || 'The browser could not decode this video.'),
+    { once: true }
+  );
 }
 
 sourceInput.addEventListener('change', () => {
   loadVideo(sourceInput, sourceVideo, sourceName, (nextUrl) => {
     if (sourceUrl) URL.revokeObjectURL(sourceUrl);
     sourceUrl = nextUrl;
+    running = false;
+    cancelAnimationFrame(animationFrame);
+    stopRecording();
     canvas.width = sourceVideo.videoWidth || 1280;
     canvas.height = sourceVideo.videoHeight || 720;
-    context.drawImage(sourceVideo, 0, 0, canvas.width, canvas.height);
-    startButton.disabled = !handLandmarker;
-    setStatus('Source ready. Hold both hands in a clear frame and start the effect.');
-    trackingPill.textContent = 'Source ready';
+    sourceVideo.pause();
+    startButton.textContent = 'Start effect';
+    recordButton.disabled = true;
+
+    const drawPreview = () => {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(sourceVideo, 0, 0, canvas.width, canvas.height);
+      startButton.disabled = !handLandmarker;
+      setStatus('Preview ready. Click Start effect to track the four fingertips.');
+      trackingPill.textContent = 'Preview ready';
+    };
+    const previewTime = Number.isFinite(sourceVideo.duration)
+      ? Math.min(0.25, sourceVideo.duration / 4)
+      : 0;
+    if (previewTime > 0.01 && Math.abs(sourceVideo.currentTime - previewTime) > 0.01) {
+      sourceVideo.addEventListener('seeked', drawPreview, { once: true });
+      sourceVideo.currentTime = previewTime;
+    } else {
+      drawPreview();
+    }
+  }, (message) => {
+    setStatus(message);
+    trackingPill.textContent = 'Video error';
+    startButton.disabled = true;
   });
 });
 
@@ -60,7 +88,12 @@ worldInput.addEventListener('change', () => {
     worldUrl = nextUrl;
     worldVideo.loop = true;
     worldVideo.muted = true;
-    void worldVideo.play();
+    void worldVideo.play().catch(() => {
+      setStatus('Portal video loaded. It will start when you click Start effect.');
+    });
+  }, (message) => {
+    setStatus(message);
+    worldName.textContent = 'Portal video could not be loaded';
   });
 });
 
@@ -184,14 +217,22 @@ async function startEffect() {
   if (!sourceUrl || !handLandmarker) return;
   running = !running;
   if (running) {
-    smoothedQuad = null;
-    missedFrames = 0;
-    await sourceVideo.play();
-    if (worldUrl) await worldVideo.play();
-    startButton.textContent = 'Pause effect';
-    recordButton.disabled = false;
-    setStatus('Tracking two hands. Keep the finger window open and well lit.');
-    animationFrame = requestAnimationFrame(render);
+    try {
+      smoothedQuad = null;
+      missedFrames = 0;
+      await sourceVideo.play();
+      if (worldUrl) await worldVideo.play();
+      startButton.textContent = 'Pause effect';
+      recordButton.disabled = false;
+      setStatus('Tracking two hands. Keep the finger window open and well lit.');
+      animationFrame = requestAnimationFrame(render);
+    } catch (error) {
+      console.error(error);
+      running = false;
+      recordButton.disabled = true;
+      setStatus('Playback could not start. Try an MP4, MOV, or WebM encoded for the web.');
+      trackingPill.textContent = 'Playback error';
+    }
   } else {
     sourceVideo.pause();
     worldVideo.pause();
@@ -243,17 +284,27 @@ async function initialize() {
     const vision = await FilesetResolver.forVisionTasks(
       'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.22-rc.20250304/wasm'
     );
-    handLandmarker = await HandLandmarker.createFromOptions(vision, {
-      baseOptions: {
-        modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task',
-        delegate: 'GPU',
-      },
+    const options = {
       runningMode: 'VIDEO',
       numHands: 2,
       minHandDetectionConfidence: 0.62,
       minHandPresenceConfidence: 0.58,
       minTrackingConfidence: 0.58,
-    });
+    };
+    const modelAssetPath =
+      'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task';
+    try {
+      handLandmarker = await HandLandmarker.createFromOptions(vision, {
+        ...options,
+        baseOptions: { modelAssetPath, delegate: 'GPU' },
+      });
+    } catch (gpuError) {
+      console.warn('GPU hand tracking unavailable; using CPU.', gpuError);
+      handLandmarker = await HandLandmarker.createFromOptions(vision, {
+        ...options,
+        baseOptions: { modelAssetPath, delegate: 'CPU' },
+      });
+    }
     startButton.disabled = !sourceUrl;
     setStatus('Hand tracker ready. Upload a source video to begin.');
   } catch (error) {

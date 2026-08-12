@@ -1,8 +1,22 @@
 # Finger Frame Effect AI
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [Español](README.es.md)
+
 Turn a two-hand gesture into a tracked video portal. This open-source browser demo detects the frame made by your thumbs and index fingers, follows it through a source clip, and reveals another moving world inside the shape.
 
 ![Finger Frame Effect AI demo](assets/finger-frame-ai-hero.jpg)
+
+## Watch the effect
+
+Click a preview to play the authorized reference clip. These videos document the trend; they are not outputs from this repository.
+
+| Sophia Yang | @panpan_kiwi / @koreanoli |
+| --- | --- |
+| [![Finger-frame AI demo by Sophia Yang](public/examples/sophia-yang-finger-frame-demo-01.jpg)](https://aithink001.github.io/finger-frame-effect-ai/examples/sophia-yang-finger-frame-demo-01.mp4) | [![Viral Korean finger-frame transition](public/examples/viral-korean-finger-frame-demo.jpg)](https://aithink001.github.io/finger-frame-effect-ai/examples/viral-korean-finger-frame-demo.mp4) |
+| @QingQ77 | @venturetwins |
+| [![Early finger-frame transition by QingQ77](public/examples/qingq77-original-finger-frame-demo.jpg)](https://aithink001.github.io/finger-frame-effect-ai/examples/qingq77-original-finger-frame-demo.mp4) | [![Real-time AI finger-frame demo by venturetwins](public/examples/venturetwins-live-finger-frame-demo.jpg)](https://aithink001.github.io/finger-frame-effect-ai/examples/venturetwins-live-finger-frame-demo.mp4) |
+
+[Open the interactive demo](https://aithink001.github.io/finger-frame-effect-ai/) · [View the original X sources](research/x-sources.md)
 
 ## Try the AI video version
 
