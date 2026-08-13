@@ -9,9 +9,11 @@
 ## 데모와 AI 영상 생성
 
 - [한국어 온라인 데모 열기](https://aithink001.github.io/finger-frame-effect-ai/ko/)
-- [C Dance AI에서 완성 영상 만들기](https://cdance.ai/ko/finger-frame-effect-ai?utm_source=github&utm_medium=readme-ko&utm_campaign=finger_frame_ai)
+- [C Dance AI에서 프레임 정렬 스타일 레이어 만들기](https://cdance.ai/ko/finger-frame-effect-ai?utm_source=github&utm_medium=readme-ko&utm_campaign=finger_frame_ai)
 
-GitHub 데모는 업로드한 영상을 현재 브라우저 탭에서 처리하므로 손 추적과 로컬 합성 방식을 직접 확인하기 좋습니다. C Dance AI 워크플로는 Gemini Omni로 원본 영상을 편집하며, 인물, 손, 동작과 카메라를 보존하도록 작성된 프롬프트를 함께 전달합니다.
+안정적인 재현은 두 단계입니다. 먼저 C Dance AI의 Gemini Omni로 원본 전체를 프레임 정렬된 3D, 애니메이션, 사이버펑크 또는 수채화 레이어로 만듭니다. 다운로드한 뒤 GitHub 데모에서 원본을 **Source video**, 생성본을 **Portal video**로 넣으면 브라우저가 네 손끝을 추적해 로컬 합성을 완성합니다.
+
+C Dance AI 작업 공간을 열어도 유료 생성은 자동으로 시작되지 않습니다. 프롬프트와 크레딧을 먼저 확인한 뒤 본인의 4~10초 MP4/MOV를 올리세요. 10초를 넘는 영상은 잘린 결과에 크레딧이 쓰이지 않도록 업로드 전에 차단됩니다.
 
 ## 트렌드 영상
 

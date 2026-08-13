@@ -9,9 +9,11 @@
 ## 在线体验与 AI 生成
 
 - [打开中文在线 Demo](https://aithink001.github.io/finger-frame-effect-ai/zh/)
-- [在 C Dance AI 生成完整视频](https://cdance.ai/zh/finger-frame-effect-ai?utm_source=github&utm_medium=readme-zh&utm_campaign=finger_frame_ai)
+- [在 C Dance AI 生成逐帧对齐的风格层](https://cdance.ai/zh/finger-frame-effect-ai?utm_source=github&utm_medium=readme-zh&utm_campaign=finger_frame_ai)
 
-GitHub Demo 在当前浏览器标签页处理视频，适合查看手部追踪、四角稳定和本地合成效果。C Dance AI 使用 Gemini Omni 编辑源视频，能够生成指间世界的光线与运动，并带入保护人物、手部、动作和机位的提示词。
+稳定复现需要两步：先在 C Dance AI 用 Gemini Omni 把完整源视频转换成逐帧对齐的 3D、动漫、赛博朋克或水彩风格层；下载后回到 GitHub Demo，把原视频放入 **Source video**，把生成结果放入 **Portal video**，再由浏览器追踪四个指尖并完成局部合成。
+
+打开 C Dance AI 工作台不会自动扣费或开始生成。请先检查提示词和积分消耗，再上传你自己的 4–10 秒 MP4/MOV；超过 10 秒的视频会在上传前被拦截，避免只处理前段却消耗完整积分。
 
 ## 热门视频参考
 

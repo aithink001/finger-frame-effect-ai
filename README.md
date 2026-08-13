@@ -18,11 +18,13 @@ Click a preview to play the authorized reference clip. These videos document the
 
 [Open the interactive demo](https://aithink001.github.io/finger-frame-effect-ai/) · [View the original X sources](research/x-sources.md)
 
-## Try the AI video version
+## Build the AI version without guessing the mask
 
-The local demo below uses hand landmarks and browser compositing. If you want a generative video edit that can redraw the world behind your fingers, use the hosted [Finger Frame Effect AI Video Generator](https://cdance.ai/finger-frame-effect-ai?utm_source=github&utm_medium=readme&utm_campaign=finger_frame_ai) on C Dance AI.
+The reproducible workflow has two stages. First, use the hosted [Finger Frame Effect AI Video Generator](https://cdance.ai/finger-frame-effect-ai?utm_source=github&utm_medium=readme&utm_campaign=finger_frame_ai) to turn the entire source clip into a pixel-aligned 3D, anime, cyberpunk, or watercolor layer. Then return here, load the original as **Source video** and the generated layer as **Portal video**, and let the browser tracker clip it inside the moving four-fingertip frame.
 
-[Create a finger-frame video on C Dance AI](https://cdance.ai/finger-frame-effect-ai?utm_source=github&utm_medium=readme&utm_campaign=finger_frame_ai)
+Opening the workspace does not start a paid generation. Review the prompt and credit cost first, then upload your own 4–10 second MP4/MOV. Longer clips are rejected before upload so they cannot silently spend credits on a truncated result.
+
+[Generate the aligned AI layer on C Dance AI](https://cdance.ai/finger-frame-effect-ai?utm_source=github&utm_medium=readme&utm_campaign=finger_frame_ai)
 
 ## Trend reference
 
@@ -52,7 +54,7 @@ npm run dev
 
 Open the local URL printed by Vite, upload a short hand-frame clip, and press **Start effect**. You can also add a second video to use as the world inside the frame.
 
-For the cleanest first test, use a four-to-eight-second clip with a locked camera, even light, both hands visible, and a rectangular opening held for at least two seconds.
+For the cleanest first test, use a four-to-eight-second clip with a locked camera, even light, both hands visible, and a rectangular opening held for at least two seconds. The hosted Gemini Omni workflow accepts no more than ten seconds.
 
 ## How the tracking works
 
@@ -68,7 +70,7 @@ This is a practical demo rather than a production hand-tracking benchmark. Cross
 
 ## AI prompt recipe
 
-The hosted workflow uses a different method. It sends the source clip to a video-editing model with instructions to preserve the face, hands, camera, and timing while generating motion inside the opening. The [C Dance AI landing page](https://cdance.ai/finger-frame-effect-ai?utm_source=github&utm_medium=readme&utm_campaign=finger_frame_ai) includes four tested prompt structures and opens the workspace with Gemini Omni selected.
+The hosted workflow asks the video model to change visual style only. Its prompt locks duration, timing, camera, field of view, composition, body position, facial landmarks, expression, clothing, hands, and occlusions frame by frame. It deliberately does not ask the model to invent the moving mask: this project handles that deterministic tracking and compositing step afterward. The [C Dance AI landing page](https://cdance.ai/finger-frame-effect-ai?utm_source=github&utm_medium=readme&utm_campaign=finger_frame_ai) includes four style presets and opens the workspace with Gemini Omni selected.
 
 ## Project structure
 

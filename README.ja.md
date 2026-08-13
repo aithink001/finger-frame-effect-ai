@@ -9,9 +9,11 @@
 ## デモとAI動画生成
 
 - [日本語のオンラインデモ](https://aithink001.github.io/finger-frame-effect-ai/ja/)
-- [C Dance AIで完成版を生成](https://cdance.ai/ja/finger-frame-effect-ai?utm_source=github&utm_medium=readme-ja&utm_campaign=finger_frame_ai)
+- [C Dance AIで位置の合ったスタイル層を生成](https://cdance.ai/ja/finger-frame-effect-ai?utm_source=github&utm_medium=readme-ja&utm_campaign=finger_frame_ai)
 
-GitHub版はアップロード動画を現在のブラウザタブ内で処理し、手の追跡、4点の安定化、ローカル合成を確認できます。C Dance AI版はGemini Omniで元動画を編集し、人物、手、動作、カメラを維持するためのプロンプトを渡します。
+安定した再現は2段階です。まずC Dance AIのGemini Omniで元動画全体を、位置の合った3D、アニメ、サイバーパンク、水彩のスタイル層へ変換します。保存後、GitHub版で元動画を **Source video**、生成動画を **Portal video** として読み込むと、ブラウザが4本の指先を追跡してローカル合成します。
+
+C Dance AIのワークスペースを開いても、有料生成は自動で始まりません。プロンプトとクレジットを確認してから、自分の4〜10秒のMP4/MOVをアップロードしてください。10秒を超える動画は、短く切られた結果にクレジットを使わないようアップロード前に拒否されます。
 
 ## トレンド動画
 

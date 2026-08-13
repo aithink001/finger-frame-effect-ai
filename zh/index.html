@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finger Frame Effect AI 手指取景特效在线 Demo</title>
-    <meta name="description" content="免费体验 Finger Frame Effect AI 手指取景特效：浏览器本地手部追踪、视频传送门与 WebM 导出，并可前往 C Dance AI 生成完整 AI 视频。" />
+    <meta name="description" content="免费体验 Finger Frame Effect AI 手指取景特效：先生成逐帧对齐的 AI 风格层，再用浏览器四指追踪完成视频合成与 WebM 导出。" />
     <meta name="keywords" content="finger frame effect ai,手指取景特效,手框特效 AI,AI 视频特效,手势传送门视频" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://aithink001.github.io/finger-frame-effect-ai/zh/" />
@@ -21,7 +21,7 @@
     <meta property="og:image" content="https://aithink001.github.io/finger-frame-effect-ai/assets/finger-frame-ai-hero.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","name":"Finger Frame Effect AI","description":"浏览器端手部追踪与视频合成开源 Demo。","codeRepository":"https://github.com/aithink001/finger-frame-effect-ai","programmingLanguage":"JavaScript","license":"https://opensource.org/license/mit"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"什么是手指取景特效？","acceptedAnswer":{"@type":"Answer","text":"用双手在镜头前组成窗口，再在指间区域显示另一个动态世界。"}},{"@type":"Question","name":"上传的视频会发送到服务器吗？","acceptedAnswer":{"@type":"Answer","text":"不会。开源 Demo 在当前浏览器标签页读取和合成视频。"}},{"@type":"Question","name":"如何生成更完整的 AI 版本？","acceptedAnswer":{"@type":"Answer","text":"前往 C Dance AI，上传自己的源视频并使用预设的手部稳定提示词。"}}]}]}
+      {"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","name":"Finger Frame Effect AI","description":"浏览器端手部追踪与视频合成开源 Demo。","codeRepository":"https://github.com/aithink001/finger-frame-effect-ai","programmingLanguage":"JavaScript","license":"https://opensource.org/license/mit"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"什么是手指取景特效？","acceptedAnswer":{"@type":"Answer","text":"用双手在镜头前组成窗口，再在指间区域显示另一个动态世界。"}},{"@type":"Question","name":"上传的视频会发送到服务器吗？","acceptedAnswer":{"@type":"Answer","text":"不会。开源 Demo 在当前浏览器标签页读取和合成视频。"}},{"@type":"Question","name":"如何生成更完整的 AI 版本？","acceptedAnswer":{"@type":"Answer","text":"先在 C Dance AI 生成逐帧对齐的完整风格层，再把原视频和风格层放入本 Demo 完成四指追踪合成。"}}]}]}
     </script>
   </head>
   <body>
@@ -31,13 +31,13 @@
         <div class="hero-copy">
           <nav class="language-switch" aria-label="语言"><a href="../">EN</a><a class="active" href="./">中文</a><a href="../ko/">한국어</a><a href="../ja/">日本語</a><a href="../es/">ES</a></nav>
           <p class="eyebrow">开源手部追踪与视频合成</p><h1>Finger Frame Effect AI 手指取景特效</h1>
-          <p class="hero-lede">用双手组成一个窗口。浏览器追踪四个指尖，把另一个动态世界稳定地显示在手框中。你也可以前往 C Dance AI，把源视频生成成更有冲击力的 AI 传送门短片。</p>
+          <p class="hero-lede">用双手组成一个窗口。浏览器追踪四个指尖，把另一个动态画面稳定地显示在手框中。前往 C Dance AI 生成逐帧对齐的 AI 风格层，再回到这里完成最终合成。</p>
           <div class="hero-actions"><a class="button button-primary" href="../#demo">体验本地 Demo</a><a class="button button-secondary" href="https://cdance.ai/zh/finger-frame-effect-ai?utm_source=github-pages&utm_medium=zh&utm_campaign=finger_frame_ai">用 AI 生成</a></div>
           <ul class="proof-list"><li>视频留在浏览器</li><li>MediaPipe 手部关键点</li><li>支持 WebM 导出</li></ul>
         </div>
         <figure class="hero-visual"><img src="../assets/finger-frame-ai-hero.jpg" alt="创作者用双手组成取景框，指间出现发光的未来城市" width="1672" height="941" /></figure>
       </section>
-      <section class="localized-intro"><p class="eyebrow">怎么拍更稳</p><h2>清晰的四个指尖，比复杂背景更重要</h2><p>把手机固定在三脚架或稳定平面上，使用柔和的正面光，让两只手完整入镜。拇指和食指组成的开口至少保持两秒，不要让手指互相遮挡。先用四到八秒的短视频测试，再根据追踪轮廓调整动作速度和光线。</p><p>开源版本使用手部关键点和 Canvas 多边形裁剪，不会生成新像素。C Dance AI 版本则使用视频编辑模型，在尽量保留人物、手、动作和机位的同时，生成会运动、会反光的内部世界。</p></section>
+      <section class="localized-intro"><p class="eyebrow">怎么拍更稳</p><h2>清晰的四个指尖，比复杂背景更重要</h2><p>把手机固定在三脚架或稳定平面上，使用柔和的正面光，让两只手完整入镜。拇指和食指组成的开口至少保持两秒，不要让手指互相遮挡。先用四到八秒的短视频测试，再根据追踪轮廓调整动作速度和光线。</p><p>可靠流程分两步：C Dance AI 先把完整源视频重绘成逐帧对齐的风格层；开源版本再使用手部关键点和 Canvas 多边形裁剪，把风格层合成到四个指尖之间。</p></section>
       <section id="examples" class="reference-section"><div class="section-heading"><p class="eyebrow">已授权趋势案例</p><h2>手指取景特效的热门表达</h2><p>以下四条视频均保留创作者与 X 原帖来源，用于说明趋势演变，不是本项目的生成结果或训练数据。</p></div>
         <div class="reference-grid">
           <figure><video controls muted loop playsinline preload="metadata" poster="../examples/sophia-yang-finger-frame-demo-01.jpg"><source src="../examples/sophia-yang-finger-frame-demo-01.mp4" type="video/mp4" /></video><figcaption>Sophia Yang · <a href="https://x.com/sophiamyang/status/2084097320145002499">X 原帖</a></figcaption></figure>
@@ -48,10 +48,10 @@
       </section>
       <section class="faq-section"><div class="section-heading"><p class="eyebrow">常见问题</p><h2>Finger Frame Effect AI FAQ</h2></div><div class="faq-list">
         <details><summary>为什么取景框会丢失追踪？</summary><p>运动模糊、手指重叠、光线不足或任意一只手离开画面，都会让四角几何结构失效。先减慢动作并补光。</p></details>
-        <details><summary>开源 Demo 和 AI 生成有什么区别？</summary><p>开源 Demo 把现有视频裁进追踪多边形；生成式版本会重新绘制指间世界，因此能产生更自然的光线和运动，也更需要逐帧检查手部。</p></details>
+        <details><summary>开源 Demo 和 AI 生成有什么区别？</summary><p>C Dance AI 生成与源视频逐帧对齐的完整风格层；开源 Demo 负责四指追踪，并只把该风格层裁进移动手框。</p></details>
         <details><summary>可以用别人的热门视频吗？</summary><p>只应使用你拥有或取得编辑许可的素材。公开帖子不会自动授予二次创作或再分发权。</p></details>
       </div></section>
-      <section class="ai-cta"><div><p class="eyebrow">生成式版本</p><h2>把手框变成你描述的世界</h2><p>C Dance AI 会预选 Gemini Omni 视频编辑，并带入强调手部、面部和镜头稳定的提示词。</p></div><a class="button button-primary" href="https://cdance.ai/zh/finger-frame-effect-ai?utm_source=github-pages&utm_medium=zh-cta&utm_campaign=finger_frame_ai">打开 C Dance AI</a></section>
+      <section class="ai-cta"><div><p class="eyebrow">生成对齐风格层</p><h2>先生成风格，再把它追踪进手框</h2><p>C Dance AI 会预选 Gemini Omni 和严格对齐提示词。下载结果后，把它作为 Portal video 放入本 Demo 完成合成。</p></div><a class="button button-primary" href="https://cdance.ai/zh/finger-frame-effect-ai?utm_source=github-pages&utm_medium=zh-cta&utm_campaign=finger_frame_ai">打开 C Dance AI</a></section>
     </main>
     <footer><p>原创开源实现 · 第三方视频按单独授权条款使用</p><a href="https://github.com/aithink001/finger-frame-effect-ai/blob/main/ATTRIBUTIONS.md">素材归因</a></footer>
     <script type="module" src="../src/locale-page.js"></script>

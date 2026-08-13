@@ -9,9 +9,11 @@ Esta demo de código abierto sigue la ventana formada con las dos manos. MediaPi
 ## Demo y generación con IA
 
 - [Abrir la demo en español](https://aithink001.github.io/finger-frame-effect-ai/es/)
-- [Crear el vídeo final en C Dance AI](https://cdance.ai/es/finger-frame-effect-ai?utm_source=github&utm_medium=readme-es&utm_campaign=finger_frame_ai)
+- [Generar la capa de estilo alineada en C Dance AI](https://cdance.ai/es/finger-frame-effect-ai?utm_source=github&utm_medium=readme-es&utm_campaign=finger_frame_ai)
 
-La demo de GitHub procesa el material en la pestaña actual del navegador y permite estudiar el seguimiento, la estabilización de las cuatro esquinas y la composición local. El flujo de C Dance AI edita el vídeo fuente con Gemini Omni y envía instrucciones específicas para conservar persona, manos, movimiento y cámara.
+El flujo fiable tiene dos etapas. Primero, C Dance AI usa Gemini Omni para convertir todo el original en una capa 3D, anime, ciberpunk o acuarela alineada fotograma a fotograma. Después, carga el original como **Source video** y el resultado como **Portal video** en la demo de GitHub; el navegador sigue los cuatro dedos y completa la composición local.
+
+Abrir el espacio de C Dance AI no inicia una generación de pago. Revisa primero la instrucción y el coste, y después sube tu propio MP4/MOV de 4–10 segundos. Los vídeos de más de 10 segundos se bloquean antes de subirlos para evitar gastar créditos en un resultado recortado.
 
 ## Vídeos de la tendencia
 
